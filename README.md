@@ -1,4 +1,4 @@
-# lockstars_app
+# Lockstars
 
 An app for Lockstars Smart Lockers
 
