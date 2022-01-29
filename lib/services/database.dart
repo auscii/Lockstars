@@ -6,6 +6,7 @@ import 'package:lockstars_app/models/user.dart';
 import 'package:lockstars_app/services/gpg.dart';
 import 'package:lockstars_app/shared/globals.dart';
 import 'package:openpgp/openpgp.dart';
+import 'package:provider/provider.dart';
 
 final String domainx = GlobalData.domainx;
 
@@ -53,6 +54,7 @@ class DatabaseService {
   Future<bool> accountCheckAndCreation(String uuid, String lmobile) async {
     //DatabaseService _db = DatabaseService(uid: "uuid");
     bool ret = false;
+    double newUserStarsOrToken = 0;
     if ((uuid != "") && (lmobile != "")) {
       String dbuid = await mobile2uid(lmobile);
       print("checking if user exists.");
@@ -74,11 +76,12 @@ class DatabaseService {
         KeyPair? kp =
             await generateKeyPair(lmobile, '$emaill@user.locky.app', uuid);
         if (kp != null) {
+          newUserStarsOrToken = 400;
           UserData uuser = UserData(
             uid: uuid,
             mobile: lmobile,
             promowallet: 0,
-            paywallet: 0,
+            paywallet: newUserStarsOrToken,
             email: '',
             name: '',
             secret: await encodeB64(uuid),
@@ -131,6 +134,7 @@ class DatabaseService {
     return await messagesCollection.add(jdata);
   }
 
+//UPDATE USER DATA
   Future<void> updateUserData(UserData uuser) async {
     //return await userCollection.document(uid).setData({
     return await userCollection.doc(uuser.uid).set({

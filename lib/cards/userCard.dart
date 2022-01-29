@@ -22,7 +22,7 @@ class _UserState extends State<USERCARD> {
           },
           leading: Icon(Icons.person),
           title: Text(
-              "TEST HERE USERCARD -> ${(uuser.registered ?? false) ? uuser.name : uuser.mobile}"),
+              "${(uuser.registered ?? false) ? uuser.name : uuser.mobile}"),
           subtitle: Text(
               "Wallet: ${uuser.paywallet?.toStringAsFixed(2)} + ${uuser.promowallet?.toStringAsFixed(2)}P stars\nMobile: ${uuser.mobile ?? 'NaN'}"),
           //tileColor: ((uuser.paywallet ?? 0) < 10) ? Colors.red : Colors.white,
