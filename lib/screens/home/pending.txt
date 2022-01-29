@@ -1,0 +1,53 @@
+import 'package:flutter/material.dart';
+import 'package:lockstars_app/cards/transactTile.dart';
+import 'package:lockstars_app/models/lockerDoor.dart';
+import 'package:lockstars_app/services/database.dart';
+import 'package:lockstars_app/screens/auth/db_provider.dart';
+
+class pList extends StatelessWidget {
+  const pList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final DatabaseService db = dbProvider.of(context)!.db;
+    return StreamBuilder<List<doorTransact>>(
+        stream: db.lockerTransDataU,
+        //builder: (context, AsyncSnapshot<String> snapshot) {
+        builder: (context, snapshot) {
+          return ListView.builder(
+            //scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemCount: snapshot.data!.length,
+            itemBuilder: (context, index) {
+              return toUnlockLocker(toUnlockDoor: snapshot.data![index]);
+            },
+          );
+        });
+  }
+}
+
+/*
+          if (snapshot. == ConnectionState.active) {
+            final bool signedIn = snapshot.hasData;
+            final user = snapshot.data;
+            if (signedIn) {
+              // ignore: unnecessary_null_comparison
+              if (user == null) {
+                return Loading();
+              } else {
+                return userHome(
+                  uid: user.uid,
+                );
+              }
+            } else {
+              return SignIn();
+            }
+          } else {
+            return Container(
+              color: Colors.black,
+            );
+          }
+        });
+  }
+}
+*/

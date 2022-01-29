@@ -1,0 +1,70 @@
+{
+  "project_info": {
+    "project_number": "435708045284",
+    "project_id": "locky-app",
+    "storage_bucket": "locky-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435708045284:android:25426d6491031cb9a049f1",
+        "android_client_info": {
+          "package_name": "com.reconlab.locky"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "435708045284-5gonrr8r68p4mh12vqvuavsvundaepa1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reconlab.locky",
+            "certificate_hash": "bf08f420e598ffd3a91a0df4a2756c7fb2df47da"
+          }
+        },
+        {
+          "client_id": "435708045284-add70bmguo9j0o4dg0veeuqoesrc3mnl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reconlab.locky",
+            "certificate_hash": "45737cb141f3445af6b52ab31bc32f87e4d1fae5"
+          }
+        },
+        {
+          "client_id": "435708045284-p5rv5d2ltdlte9grhq3o1vn3l2hgb1ae.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reconlab.locky",
+            "certificate_hash": "7b398e6c96d8f91e5c8c4e3df7479b19e48e9577"
+          }
+        },
+        {
+          "client_id": "435708045284-f2s96f51ftbhajgjob32s80l58hvgi68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOCeIIacXhdLEU1C4V1OD_SFcFbuDkCow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "435708045284-f2s96f51ftbhajgjob32s80l58hvgi68.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "435708045284-4pi0l81mobhe4i7u8ajd853jgv02vog6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.reconlab.lockstars"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
