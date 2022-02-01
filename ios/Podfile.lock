@@ -361,7 +361,7 @@ PODS:
   - Firebase/Messaging (8.9.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 8.9.0)
-  - firebase_auth (1.4.1):
+  - firebase_auth (3.2.0):
     - Firebase/Auth (= 8.9.0)
     - firebase_core
     - Flutter
@@ -483,6 +483,8 @@ PODS:
   - qr_code_scanner (0.2.0):
     - Flutter
     - MTBBarcodeScanner
+  - shared_preferences_ios (0.0.1):
+    - Flutter
   - url_launcher (0.0.1):
     - Flutter
 
@@ -498,6 +500,7 @@ DEPENDENCIES:
   - libphonenumber_plugin (from `.symlinks/plugins/libphonenumber_plugin/ios`)
   - openpgp (from `.symlinks/plugins/openpgp/ios`)
   - qr_code_scanner (from `.symlinks/plugins/qr_code_scanner/ios`)
+  - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
 SPEC REPOS:
@@ -545,6 +548,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/openpgp/ios"
   qr_code_scanner:
     :path: ".symlinks/plugins/qr_code_scanner/ios"
+  shared_preferences_ios:
+    :path: ".symlinks/plugins/shared_preferences_ios/ios"
   url_launcher:
     :path: ".symlinks/plugins/url_launcher/ios"
 
@@ -554,7 +559,7 @@ SPEC CHECKSUMS:
   cloud_firestore: 60e30de59258c57d71819abf7363f8632835122f
   fast_rsa: 348fa9c4afd02ab8659480e679f647f454acc80e
   Firebase: 13d8d96499e2635428d5bf0ec675df21f95d9a95
-  firebase_auth: ac1e9916a3283d7cf1308c7b16aed61a7eeebad5
+  firebase_auth: 0d56cc4d105ff70d1547a7fcb10ee574ad05adf5
   firebase_core: f770e033e790657b3505f04be4cb24c482912f11
   firebase_messaging: 0c8d1a1732487db7f332fb65232053e93201e2fb
   FirebaseAuth: 2b78b2a32c07b3ecfa4970bdf1d3632b8304099b
@@ -576,9 +581,10 @@ SPEC CHECKSUMS:
   libphonenumber_plugin: 7cf755ad1656145935d6c208173a476bd3f12898
   MTBBarcodeScanner: f453b33c4b7dfe545d8c6484ed744d55671788cb
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
-  openpgp: 1cbf076b138407c1b3d6a99a4e5e844cc0a1ec88
+  openpgp: f5f55bbb8a93352e71e84ed5b548e56b5dd2110f
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   qr_code_scanner: bb67d64904c3b9658ada8c402e8b4d406d5d796e
+  shared_preferences_ios: aef470a42dc4675a1cdd50e3158b42e3d1232b32
   url_launcher: b6e016d912f04be9f5bf6e8e82dc599b7ba59649
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
