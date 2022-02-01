@@ -37,8 +37,8 @@ android {
         applicationId "com.reconlab.locky" //"com.example.lockstars_app"
         minSdkVersion 20
         targetSdkVersion 30
-        versionCode 8 //flutterVersionCode.toInteger()
-        versionName "v1.0.8" //flutterVersionName
+        versionCode 9 //flutterVersionCode.toInteger()
+        versionName "v1.0.9" //flutterVersionName
         multiDexEnabled true
     }
 

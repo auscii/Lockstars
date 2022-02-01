@@ -99,17 +99,34 @@ class _MyHomePageState extends State<RegistrationPage> {
                       regUser.email = _email;
                       regUser.name = _name;
                       regUser.registered = true;
-                      if (!(regUser.registered ?? false)) {
+                      if (regUser.registered ?? false) {
                         regUser.promowallet = 400;
                       }
                       await _db.updateUserData(regUser);
-                      Navigator.pop(context);
+                      showDialog(
+                          context: context,
+                          builder: (_) {
+                            return AlertDialog(
+                              title: new Text("Welcome Gift"),
+                              actions: <Widget>[
+                                Text("Thank you for signing up. 400 Promo Stars are credited to your account."),
+                                TextButton(
+                                  child: new Text("OK"),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    //Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          }
+                      );
+                      // Navigator.pop(context);
                     }
-                  },
+                },
             tooltip: 'Register',
             label: Text('Register'),
             icon: Icon(Icons.app_registration_rounded),
-            //child: const Icon(Icons.qr_code_scanner),
             backgroundColor: Colors.blue,
           ),
           floatingActionButtonLocation:

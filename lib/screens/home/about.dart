@@ -71,7 +71,7 @@ class _MyHomePageState extends State<AboutPage> {
                                            color: Colors.black),
                         ),
                         Text(
-                          'v1.0.8',
+                          'v1.0.9',
                           style: TextStyle(fontSize: 15.0, 
                                            fontStyle: FontStyle.italic,
                                            color: Colors.black),

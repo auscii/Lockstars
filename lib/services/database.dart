@@ -6,7 +6,6 @@ import 'package:lockstars_app/models/user.dart';
 import 'package:lockstars_app/services/gpg.dart';
 import 'package:lockstars_app/shared/globals.dart';
 import 'package:openpgp/openpgp.dart';
-import 'package:provider/provider.dart';
 
 final String domainx = GlobalData.domainx;
 
@@ -70,13 +69,13 @@ class DatabaseService {
         ret = true;
         //public and private keys will be loaded into streaming after login.
       } else {
+        // newUserStarsOrToken = 400;
         print("user does not exists yet. making new entry.");
         //confirm if there are no uids associated with the mobile
         String? emaill = await encodeB64(lmobile);
         KeyPair? kp =
             await generateKeyPair(lmobile, '$emaill@user.locky.app', uuid);
         if (kp != null) {
-          newUserStarsOrToken = 400;
           UserData uuser = UserData(
             uid: uuid,
             mobile: lmobile,
@@ -91,7 +90,7 @@ class DatabaseService {
           //no entry. probably new, create an entry
           await updateUserData(uuser);
           await createMessage(uuser.mobile, "message", "Welcome Gift",
-              "Thank you for signing up. 300 Promo Stars are credited to your account.");
+              "Thank you for signing up. 400 Promo Stars are credited to your account.");
           print("new user. account created.");
           ret = true;
           //transactionData.loading = false;
@@ -134,7 +133,6 @@ class DatabaseService {
     return await messagesCollection.add(jdata);
   }
 
-//UPDATE USER DATA
   Future<void> updateUserData(UserData uuser) async {
     //return await userCollection.document(uid).setData({
     return await userCollection.doc(uuser.uid).set({

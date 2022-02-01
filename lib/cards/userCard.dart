@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:lockstars_app/models/user.dart';
 import 'package:provider/provider.dart';
 
@@ -8,12 +9,19 @@ class USERCARD extends StatefulWidget {
 }
 
 class _UserState extends State<USERCARD> {
+  bool isUserRegistered = true;
+
   @override
   Widget build(BuildContext context) {
     final uuser = Provider.of<UserData>(context);
-    //final uuser = Provider.of<UserL>(context) ?? null;
-    // ignore: unnecessary_null_comparison
     if (uuser != null) {
+      if (uuser.registered != null) {
+        if (!(uuser.registered!)) {
+          setState(() {
+            isUserRegistered = false;
+          });
+        }
+      } 
       return Card(
         child: ListTile(
           onTap: () async {
@@ -39,6 +47,43 @@ class _UserState extends State<USERCARD> {
       );
     }
   }
+
+  welcomeUser() async {
+    if(!isUserRegistered) {
+      showWelcomeAlert();
+    }
+  }
+
+  void showWelcomeAlert() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) =>
+          CupertinoAlertDialog(
+            title: Text('Get Started'),
+            content: Text(
+                'Welcome! Please complete your profile information to get Free 400 stars. '
+                'Just go to Side menu and click Account Details. Thank you!'),
+            actions: <Widget>[
+              CupertinoDialogAction(
+                child: Text('OK'),
+                onPressed: () =>
+                    Navigator.of(context).pop(),
+              )
+            ],
+          )
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 2000), () {
+      setState(() {
+        this.welcomeUser();
+      });
+    });
+}
+
 }
 
 class BLANKCARD extends StatefulWidget {

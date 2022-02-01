@@ -3,14 +3,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:lockstars_app/loadUserDB.dart';
 import 'package:lockstars_app/screens/auth/auth_provider.dart';
-import 'package:lockstars_app/screens/auth/phSignIn.dart';
 import 'package:lockstars_app/screens/auth/phoneSignin.dart';
 import 'package:lockstars_app/screens/home/userHome.dart';
 import 'package:lockstars_app/screens/loading.dart';
 import 'package:lockstars_app/services/auth.dart';
-import 'package:lockstars_app/services/database.dart';
 import 'package:lockstars_app/shared/globals.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -19,7 +16,6 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'high_importance_channel', // id
     'High Importance Notifications', // title
-    // 'Channel Description', // description
     importance: Importance.high,
     playSound: true);
 
@@ -56,6 +52,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // final uuser = Provider.of<UserData>(context);
     return authProvider(
       auth: AuthService(),
       child: MaterialApp(
@@ -120,6 +117,9 @@ class _HomeController extends State<HomeController> {
   @override
   void initState() {
     super.initState();
+    // Future.delayed(Duration.zero, () {
+    //     this.welcomeUser();
+    // });
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
@@ -203,31 +203,15 @@ class _HomeController extends State<HomeController> {
                   ),
                 ),
               );
-            });
+            }
+        );
       }
     });
   }
-
-  void showNotification() {
-    setState(() {
-      _counter++;
-    });
-    flutterLocalNotificationsPlugin.show(
-        0,
-        "Testing $_counter",
-        "How you doin ?",
-        NotificationDetails(
-            android: AndroidNotificationDetails(
-                channel.id, channel.name, //channel.description,
-                importance: Importance.high,
-                color: Colors.blue,
-                playSound: true,
-                icon: '@mipmap/ic_launcher')));
-  }
-
-  //1
+  
   @override
   Widget build(BuildContext context) {
+    // Future.delayed(Duration.zero, () => showAlert(context));
     final AuthService auth = authProvider.of(context)!.auth;
     //DatabaseService _db = DatabaseService(uid: "dummy");
     return StreamBuilder<User?>(
@@ -246,6 +230,8 @@ class _HomeController extends State<HomeController> {
                 GlobalData.whoami.uid = user.uid;
                 GlobalData.whoami.mobile = user.phoneNumber;
                 GlobalData.whoami.email = "";
+                
+                print('GLOBAL DATA REGISTERED VALUE ->$GlobalData.whoami.registered');
 
                 //return dbPopulate();
                 return userHome(
@@ -263,34 +249,6 @@ class _HomeController extends State<HomeController> {
           }
         });
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     appBar: AppBar(
-  //       title: Text("Lockstars App"),
-  //     ),
-  //     body: Center(
-  //       child: Column(
-  //         mainAxisAlignment: MainAxisAlignment.center,
-  //         children: <Widget>[
-  //           Text(
-  //             'You have pushed the button this many times:',
-  //           ),
-  //           Text(
-  //             '$_counter',
-  //             style: Theme.of(context).textTheme.headline4,
-  //           ),
-  //         ],
-  //       ),
-  //     ),
-  //     floatingActionButton: FloatingActionButton(
-  //       onPressed: showNotification,
-  //       tooltip: 'Increment',
-  //       child: Icon(Icons.add),
-  //     ),
-  //   );
-  // }
 
 }
 
